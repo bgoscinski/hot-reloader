@@ -2,7 +2,7 @@
   "name": "hot-reloader",
   "version": "1.0.0",
   "description": "Hot reload exported properties when file changes",
-  "main": "src/fire.js",
+  "main": "src/hot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +24,7 @@
     "reload",
     "exports",
     "es6",
+    "es2015",
     "modules"
   ],
   "bugs": {
