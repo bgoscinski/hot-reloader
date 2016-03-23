@@ -1,18 +1,19 @@
-'use strict';
+'use strict'
 
 const lodash = require('lodash')
 
-module.exports = lodash.once((opts) => {
-  const fire = new (require('events').EventEmitter)()
-  const watcherOpts = lodash.defaults(opts, {
+module.exports = lodash.once((matcherSrc, optsSrc) => {
+  const reloader = new (require('events').EventEmitter)()
+  const opts = lodash.defaults(optsSrc, {
     ignoreInitial: true,
     persistent: false,
     ignored: /(node_modules|jspm_packages|bower_components)/
   })
 
+  const matcher = require('anymatch')(matcherSrc)
   const watcher = require('agg-watcher')
-    .watch(require.main.filename, watcherOpts, (changes, done) => {
-      changes.changed.forEach(onFileChange);
+    .watch([require.main.filename].filter(matcher), opts, (changes, done) => {
+      changes.changed.forEach(onFileChange)
       done()
     })
 
@@ -21,11 +22,15 @@ module.exports = lodash.once((opts) => {
   const load = Module.prototype.load
   Module.prototype.load = function(filename) {
     const loaded = load.call(this, filename)
-    watcher.add(filename)
+
+    if (matcher(filename)) {
+      watcher.add(filename)
+    }
+
     return loaded
   }
 
-  return fire
+  return reloader
 })
 
 const onFileChange = lodash.spread((filename) => {

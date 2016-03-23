@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "agg-watcher": "^1.0.0",
+    "anymatch": "^1.3.0",
     "lodash": "^4.6.1"
   },
   "devDependencies": {},
