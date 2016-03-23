@@ -1,0 +1,32 @@
+{
+  "name": "hot-reloader",
+  "version": "1.0.0",
+  "description": "Hot reload exported properties when file changes",
+  "main": "src/fire.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bartosz Gościński <bargosc@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "agg-watcher": "^1.0.0",
+    "lodash": "^4.6.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgoscinski/hot-reloader.git"
+  },
+  "keywords": [
+    "node",
+    "hot",
+    "reload",
+    "exports",
+    "es6",
+    "modules"
+  ],
+  "bugs": {
+    "url": "https://github.com/bgoscinski/hot-reloader/issues"
+  },
+  "homepage": "https://github.com/bgoscinski/hot-reloader#readme"
+}
